@@ -2,13 +2,12 @@
 .stack 100h
 .8086
 .data
-	a1 db 5 dup (?)
+	a1 db 4 dup (?)
 	LEN EQU 4
 
 	msg1 db 10,13,"Enter 4 array bytes: $"
-	msg2 db 10,13,"Enter byte to search: $"
-	msg3 db 10,13,"Found at : 0x$"
-	msg4 db 10,13,"Not found$"
+	msg2 db 10,13,"Smallest number is 0x$"
+	msg3 db 10,13,"Largest number is 0x$"
 
 .code
 include tty.asm
@@ -16,44 +15,59 @@ include tty.asm
 main proc
 	mov ax, ds
 	mov es, ax
-	cld
 
 	mov ax, offset msg1
 	push ax
 	call puts
+
 	mov cx, LEN
 	mov di, offset a1
+	cld
+
 main__inp:
 	call scn2x
 	stosb
 	loop main__inp
 
+	mov si, offset a1
+	mov cx, len
+	lodsb
+	dec cx
+	mov bl, al
+	mov bh, al
+main__find:
+	lodsb
+	cmp al, bl
+	ja main__higher
+	mov bl, al
+main__higher:
+	cmp al, bh
+	jb main__lower
+	mov bh, al
+main__lower:
+	loop main__find
+
+	; print output
 	mov ax, offset msg2
 	push ax
 	call puts
-	call scn2x
 
-	mov di, offset a1
-	mov cx, LEN
-	inc cx
-	repne scasb
-	mov ax, offset msg4
-	sub di, offset a1
-
-	cmp di, LEN
-	ja main__not_found
-	mov ax, offset msg3
-main__not_found:
+	mov ah, bl
 	push ax
-	call puts
-	cmp di, LEN
-	ja main__end
-	push di
-	mov bx, 0004h
-	push bx
+	mov ax, 2
+	push ax
 	call prt_x
 
-main__end:
+	mov ax, offset msg3
+	push ax
+	call puts
+
+	mov ah, bh
+	push ax
+	mov ax, 2
+	push ax
+	call prt_x
+
 	ret
 endp main
 .startup
