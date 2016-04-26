@@ -15,5 +15,6 @@ c:	dec al
 	out pa, al
 	cmp al, 80
 	jnz c
+	call delay
 	jmp back
 	
