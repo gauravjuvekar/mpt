@@ -1,0 +1,17 @@
+;To produce wave of form /\/\/\/\/\/\	
+	
+	mov al, 80h
+	out cwr, al
+	mov al, 01h
+	out pb, al
+	mov al, 00h
+up: 	out pa, al
+	inc al
+	cmp al, ff
+	jz down 
+	jmp up
+down:	dec al
+	out pa, al
+	cmp al, 00h
+	jz up
+	jmp down

@@ -1,0 +1,19 @@
+; To generate Temple waveform	
+;Asuumed pa pb are already designated with app vector byte
+
+	mov al, 80h
+	out cwr, al
+	mov al, 01h
+	out pb, al
+back:	mov al, 80
+	out pa, al
+b:	inc al
+	out pa, al
+	cmp al, ff
+	jnz b
+c:	dec al
+	out pa, al
+	cmp al, 80
+	jnz c
+	jmp back
+	

@@ -1,0 +1,14 @@
+; Display digits til 7 from left
+	
+	mov al, 00
+	out 31, al
+k: 	mov bx, 1001 ; From this memeory we store digital values of digits for led display
+	mov cx, ffff
+n:	mov ax, [bx]
+	out 30, al
+b:	nop
+	loop b
+	inc bx
+	cmp bx, 1008
+	jnz n
+	jmp k

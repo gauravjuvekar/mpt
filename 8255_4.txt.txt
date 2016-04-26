@@ -1,0 +1,16 @@
+;To generate sine waveform 
+
+	mov al, 80h
+	out cwr, al
+	mov al, 01h
+	out pb, al
+next:	mov bx, 5000h ;Here we store values to dispaly sine waveform 
+	mov cx, 0030h ;No of values stored
+back:	mov al, byte ptr[bx]
+	out pa, al
+	inc bx
+	dec cx
+	jz next
+	jmp back
+
+
