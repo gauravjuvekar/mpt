@@ -35,7 +35,7 @@ scn4x proc
     mov cl, 4; bits in a nibble
     mov bl, 0
 scn4x__nibble:
-	shl bl, cl
+	shl bx, cl
     mov ah, 01h
     int 21h
 
