@@ -1,0 +1,10 @@
+*.EXE
+*.exe
+*.map
+*.MAP
+*.obj
+*.OBJ
+*.LST
+*.lst
+tags
+*.tag_hl
