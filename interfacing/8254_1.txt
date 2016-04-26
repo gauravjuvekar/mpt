@@ -1,0 +1,8 @@
+; Mode 0 operation for the counter
+
+	mov al, 30h ;Mode 0 cntr 0 read lower then upper byte of cnt
+	out 33, al
+	mov al, 05
+	out 30, al ;Feeding count to cnt reg
+	mov al, 00
+	out 30, al

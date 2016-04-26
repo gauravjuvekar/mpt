@@ -1,0 +1,19 @@
+;To generate waveform _-_-_-_-	
+	
+	mov al, 80h
+	out cwr, al
+	mov al, 01h
+	out pb, al
+back:	mov al, 00h
+ 	out pa, al
+	call delay
+	mov al, ffh
+	out pa, al
+	call delay
+	jmp back
+
+;Delay procedure 
+delay proc 
+	mov cx, ffffh
+	repz dec cx
+delay endp

@@ -1,9 +1,0 @@
-; USART Sample code
-
-	mov al, 5d
-	out 31, al
-	mov al, 23
-	out 31, al
-	mov al, 55
-	out 30, al
-	int 3

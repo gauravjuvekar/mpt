@@ -1,0 +1,12 @@
+; 2 key Lockout
+
+	mov al, 00
+	out 31, al
+back:	in al, 31
+	and al, 07
+	jz back
+	in al, 30
+	mov bx, 0002
+	push cs
+	call far f000:01ac
+	jmp back
