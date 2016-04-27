@@ -1,3 +1,4 @@
+;Library Function
 scn2x  proc
 	push bx
 	push cx
