@@ -1,6 +1,6 @@
 ; Mode 2 operation for the counter
 
-	mov al, 34 ;Mode 2 cntr 0 read lower then upper byte of cnt
+	mov al, 34h ;Mode 2 cntr 0 read lower then upper byte of cnt
 	out 33, al
 	mov al, 05
 	out 30, al ;Feeding count to cnt reg

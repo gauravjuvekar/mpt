@@ -1,4 +1,4 @@
-; To generate Temple waveform	
+; To generate Temple waveform
 ;Asuumed pa pb are already designated with app vector byte
 
 	mov al, 80h
@@ -17,4 +17,4 @@ c:	dec al
 	jnz c
 	call delay
 	jmp back
-	
+

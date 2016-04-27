@@ -1,5 +1,5 @@
-;To produce wave of form /\/\/\/\/\/\	
-	
+;To produce triangle wave
+
 	mov al, 80h
 	out cwr, al
 	mov al, 01h
@@ -8,7 +8,7 @@
 up: 	out pa, al
 	inc al
 	cmp al, ff
-	jz down 
+	jz down
 	jmp up
 down:	dec al
 	out pa, al

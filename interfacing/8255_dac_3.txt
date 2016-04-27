@@ -1,5 +1,5 @@
-;To generate waveform _-_-_-_-	
-	
+;To generate square wave
+
 	mov al, 80h
 	out cwr, al
 	mov al, 01h
@@ -12,8 +12,8 @@ back:	mov al, 00h
 	call delay
 	jmp back
 
-;Delay procedure 
-delay proc 
+;Delay procedure
+delay proc
 	mov cx, ffffh
 	repz dec cx
 delay endp
