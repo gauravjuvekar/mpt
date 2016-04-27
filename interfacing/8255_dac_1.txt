@@ -1,4 +1,4 @@
-;To Generate waveforms of the type //////
+;To Generate waveforms of the type /|/|/|/|/|/
 
 	mov al, 80h
 	out cwr, al
