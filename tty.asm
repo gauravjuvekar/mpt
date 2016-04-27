@@ -105,6 +105,25 @@ puts proc; (string address)
 	ret 2
 endp puts
 
+putch proc; (char8 lower)
+	push bp
+	mov bp, sp
+	push dx
+
+	mov dx, [bp + 4]
+	mov ah, 02h
+	int 21h
+
+	pop dx
+	pop bp
+	ret 2
+endp putch
+
+getch proc
+	mov ah, 01h
+	int 21h
+	ret
+endp getch
 
 gets proc; (dest address)
 	push bp
